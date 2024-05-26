@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="timeframe col-lg-2 col-md-4">{{ .timeframe }}</div>
                             </div>
-                            <h6>{{ .name }}</h6>
+                            <h6 class="text-heading">{{ .name }}</h6>
                             {{ if .grade }}
                                 <h6 class="text-heading"><span>{{ .grade.scale }}: </span><span>{{ .grade.achieved }}</span> {{ i18n "out_of" }} <span>{{ .grade.outOf }}</span></h6>
                             {{ end }}

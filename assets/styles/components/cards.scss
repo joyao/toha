@@ -9,6 +9,11 @@
     box-shadow: $box-shadow;
     border: 1px solid get-light-color('bg-primary');
     @include transition();
+    .card-img-top {
+      transform: scale(1.2);
+      object-fit: cover;
+      @include transition();
+    }
   }
 
   .card-head {
@@ -17,8 +22,13 @@
     overflow: hidden;
   }
 
+  .card-title {
+    font-size: large;
+  }
+
   .card-body {
-    text-align: justify;
+    text-align: left;
+    font-size: smaller;
   }
 
   .card-img-top {

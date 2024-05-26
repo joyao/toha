@@ -53,6 +53,12 @@ $progress-bar-colors: (
 }
 
 .about-section {
+  .col-6 {
+    align-content: center;
+  }
+  .certificate-badge {
+    text-align: -webkit-center;
+  }
   .social-link {
     list-style: none;
     padding: 0.2rem;
