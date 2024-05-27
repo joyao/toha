@@ -7,7 +7,15 @@
       <a href="{{ if .repo }}{{ .repo }}{{ else if .url }}{{ .url }}{{ else }}javascript:void(0){{ end }}" {{ if or .repo .url }}target="_blank" rel="noopener"{{ end }}>
         {{ if .image }}
         <div class="card-head">
-          <img class="card-img-top" src="{{ .image }}" alt="Card image cap">
+        {{ $imageImage:= resources.Get .image}}
+          {{ if $imageImage }}
+            {{/*  svg don't support "Fit" operation   */}}
+            {{ if ne $imageImage.MediaType.SubType "svg" }}
+              {{ $imageImage = $imageImage.Fit "300x300" }}
+            {{ end }}
+            <img class="card-img-top" src="{{ $imageImage.RelPermalink }}" alt="{{ .name }}" />
+          {{ end }}
+          <!-- <img class="card-img-top" src="{{ .image }}" alt="Card image cap"> -->
         </div>
         {{ end }}
         <div class="card-header">
