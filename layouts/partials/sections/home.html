@@ -36,41 +36,49 @@
 
 {{/* set image sizes, these are hardcoded for now, x dictates that images are resized to this width */}}
 
-{{ $tinyw := default "500x" }}
-{{ $smallw := default "800x" }}
-{{ $mediumw := default "1200x" }}
-{{ $largew := default "1500x" }}
-
 {{/* resize the src image to the given sizes */}}
+{{ $tiny := $src }}
+{{ $small := $src }}
+{{ $medium := $src }}
+{{ $large := $src }}
 
-{{ $tiny := $src.Resize $tinyw }}
-{{ $small := $src.Resize $smallw }}
-{{ $medium := $src.Resize $mediumw }}
-{{ $large := $src.Resize $largew }}
+{{ if eq .MediaType.SubType "svg" }}
 
-{{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
-{{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
+  {{ $tinyw := default "500x" }}
+  {{ $smallw := default "800x" }}
+  {{ $mediumw := default "1200x" }}
+  {{ $largew := default "1500x" }}
 
-{{ if lt $src.Width "500" }}
-  {{ $tiny := $src}}
-  {{ $small := $src}}
-  {{ $medium := $src}}
-  {{ $large := $src}}
-{{ end }}
+  {{ $tiny := $src.Resize $tinyw }}
+  {{ $small := $src.Resize $smallw }}
+  {{ $medium := $src.Resize $mediumw }}
+  {{ $large := $src.Resize $largew }}
 
-{{ if lt $src.Width "800" }}
-  {{ $small := $src}}
-  {{ $medium := $src}}
-  {{ $large := $src}}
-{{ end }}
+  {{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
+  {{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
 
-{{ if lt $src.Width "1200" }}
-  {{ $medium := $src}}
-  {{ $large := $src}}
-{{ end }}
+  {{ if lt $src.Width "500" }}
+    {{ $tiny := $src}}
+    {{ $small := $src}}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
 
-{{ if lt $src.Width "1500" }}
-  {{ $large := $src}}
+  {{ if lt $src.Width "800" }}
+    {{ $small := $src}}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
+
+  {{ if lt $src.Width "1200" }}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
+
+  {{ if lt $src.Width "1500" }}
+    {{ $large := $src}}
+  {{ end }}
+
 {{ end }}
 
 <div class="container-fluid home" id="home">
