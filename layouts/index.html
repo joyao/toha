@@ -3,13 +3,18 @@
   <head>
     <title>{{- .Site.Title -}}</title>
     {{ $siteDescription := .Site.Params.description }}
+    {{ $siteDefaultMode := .Site.Params.defaultMode }}
     {{ if (index .Site.Data .Site.Language.Lang).site }}
       {{ $siteConfig := (index .Site.Data .Site.Language.Lang).site }}
       {{ if $siteConfig.description }}
         {{ $siteDescription = $siteConfig.description }}
       {{ end }}
+      {{ if $siteConfig.defaultMode }}
+        {{ $siteDefaultMode = $siteConfig.defaultMode }}
+      {{ end }}
     {{ end }}
     <meta name="description" content="{{ $siteDescription }}" />
+    <p id="defaultMode" hidden>{{ $siteDefaultMode }}</p>
     
     <!-- import common headers -->
     {{- partial "header.html" . -}}
@@ -18,7 +23,7 @@
     <!--================= add analytics if enabled =========================-->
     {{- partial "analytics.html" . -}}
     <script>
-      theme = localStorage.getItem('darkmode:color-scheme') || 'system';
+      theme = localStorage.getItem('darkmode:color-scheme') || document.getElementById('defaultMode').innerText || "system"
       if (theme == 'system') {
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           theme = 'dark';
