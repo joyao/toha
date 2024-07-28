@@ -32,6 +32,14 @@
       max-width: 95%;
     }
   }
+  @include media('<=small') {
+    .btn {
+      margin-top: 0.3125rem;
+    }
+    .filtr-item {
+      max-width: 100%;
+    }
+  }
 }
 
 html[data-theme='dark'] {
