@@ -4,11 +4,12 @@
     <div class="certificate-badge">
       <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
        <img src="{{ .badge }}" alt="{{ .name }}" />
+       <div style="font-size:small">{{ .name }}</div>
       </a>
     </div>
 {{ else if eq .type "hard-skill-indicator" }}
     <div class="certificate-badge">
-      <a>
+      <a href="{{ .url }}" target="_blank" rel="noopener noreferrer">
         {{ $imageImage:= resources.Get .badge}}
           {{ if $imageImage }}
             {{/*  svg don't support "Fit" operation   */}}
@@ -17,7 +18,8 @@
             {{ end }}
             <img class="card-img-top" src="{{ $imageImage.RelPermalink }}" alt="{{ .name }}" />
           {{ end }}
-      </a>
+          <div style="font-size:small">{{ .name }}</div>
+        </a>
     </div>
 {{ else if eq .type "soft-skill-indicator" }}
     {{/* Circular bar indicating the level of expertise in a skill */}}
