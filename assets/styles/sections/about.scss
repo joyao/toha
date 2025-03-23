@@ -67,6 +67,10 @@ $progress-bar-colors: (
       justify-content: space-between;
       align-items: flex-end;
     }
+
+    div {
+      width: 100%;
+    }
   }
   .social-link {
     list-style: none;
