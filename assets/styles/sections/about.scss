@@ -58,6 +58,15 @@ $progress-bar-colors: (
   }
   .certificate-badge {
     text-align: -webkit-center;
+    height: 100%;
+  
+    a {
+      display: flex;
+      height: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
   }
   .social-link {
     list-style: none;
