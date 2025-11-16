@@ -61,26 +61,27 @@
   {{/* only use images smaller than or equal to the src (original) image size, as Hugo will upscale small images */}}
   {{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
 
-{{ if lt $src.Width "500" }}
-{{ $tiny := $src}}
-{{ $small := $src}}
-{{ $medium := $src}}
-{{ $large := $src}}
-{{ end }}
+  {{ if lt $src.Width "500" }}
+    {{ $tiny := $src}}
+    {{ $small := $src}}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
 
-{{ if lt $src.Width "800" }}
-{{ $small := $src}}
-{{ $medium := $src}}
-{{ $large := $src}}
-{{ end }}
+  {{ if lt $src.Width "800" }}
+    {{ $small := $src}}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
 
-{{ if lt $src.Width "1200" }}
-{{ $medium := $src}}
-{{ $large := $src}}
-{{ end }}
+  {{ if lt $src.Width "1200" }}
+    {{ $medium := $src}}
+    {{ $large := $src}}
+  {{ end }}
 
-{{ if lt $src.Width "1500" }}
-{{ $large := $src}}
+  {{ if lt $src.Width "1500" }}
+    {{ $large := $src}}
+  {{ end }}
 {{ end }}
 
 {{/* get file that matches the filename as specified as src="" in shortcode */}}
@@ -97,25 +98,25 @@
 {{/* set the sizes attribute to (min-width: 35em) 1200px, 100vw unless overridden in shortcode */}}
 
 {{ if lt $darkSrc.Width "500" }}
-{{ $darkTiny := $src}}
-{{ $darkSmall := $src}}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
+  {{ $darkTiny := $src}}
+  {{ $darkSmall := $src}}
+  {{ $darkMedium := $src}}
+  {{ $darkLarge := $src}}
 {{ end }}
 
 {{ if lt $src.Width "800" }}
-{{ $darkSmall := $src}}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
+  {{ $darkSmall := $src}}
+  {{ $darkMedium := $src}}
+  {{ $darkLarge := $src}}
 {{ end }}
 
 {{ if lt $src.Width "1200" }}
-{{ $darkMedium := $src}}
-{{ $darkLarge := $src}}
+  {{ $darkMedium := $src}}
+  {{ $darkLarge := $src}}
 {{ end }}
 
 {{ if lt $src.Width "1500" }}
-{{ $darkLarge := $src}}
+  {{ $darkLarge := $src}}
 {{ end }}
 
 <div class="container-fluid home" id="home">
